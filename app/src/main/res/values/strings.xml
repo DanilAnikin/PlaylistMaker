@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name" translatable="false">Playlist Maker</string>
+    <string name="question">Вопрос:</string>
+    <string name="blabla">%d/%s</string>
+</resources>
