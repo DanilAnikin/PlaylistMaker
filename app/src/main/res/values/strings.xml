@@ -1,5 +1,10 @@
 <resources>
-    <string name="app_name" translatable="false">Playlist Maker</string>
-    <string name="question">Вопрос:</string>
-    <string name="blabla">%d/%s</string>
+    <string name="app_name">Playlist Maker</string>
+    <string name="search_btn_text">Поиск</string>
+    <string name="library_btn_text">Медиатека</string>
+    <string name="settings_btn_text">Настройки</string>
+    <string name="dark_theme_tv_text">Тёмная тема</string>
+    <string name="share_app_tv_text">Поделиться приложением</string>
+    <string name="support_tv_text">Написать в поддержку</string>
+    <string name="terms_of_use_tv_text">Пользовательское соглашение</string>
 </resources>
