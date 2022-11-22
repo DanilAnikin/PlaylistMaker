@@ -25,7 +25,8 @@
         app:icon="@drawable/ic_search"
         app:iconGravity="textStart"
         app:iconPadding="10dp"
-        app:iconTint="@color/nav_btn_icon_color" />
+        app:iconTint="@color/nav_btn_icon_color"
+        android:foreground="?attr/selectableItemBackground"/>
 
     <Button
         android:id="@+id/btnLibrary"
@@ -42,7 +43,8 @@
         app:icon="@drawable/ic_library"
         app:iconGravity="textStart"
         app:iconPadding="10dp"
-        app:iconTint="@color/nav_btn_icon_color" />
+        app:iconTint="@color/nav_btn_icon_color"
+        android:foreground="?attr/selectableItemBackground"/>
 
     <Button
         android:id="@+id/btnSettings"
@@ -58,6 +60,7 @@
         app:icon="@drawable/ic_settings"
         app:iconGravity="textStart"
         app:iconPadding="10dp"
-        app:iconTint="@color/nav_btn_icon_color" />
+        app:iconTint="@color/nav_btn_icon_color"
+        android:foreground="?attr/selectableItemBackground"/>
 
 </LinearLayout>
