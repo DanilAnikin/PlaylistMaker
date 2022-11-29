@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -7,92 +9,52 @@
     android:paddingTop="40dp"
     android:paddingEnd="18dp">
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="@dimen/settings_options_padding"
-        android:paddingBottom="@dimen/settings_options_padding">
+    <FrameLayout style="@style/SettingsScreenOptionsFrameLayout">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:text="@string/dark_theme_tv_text"
-            android:textColor="@color/settings_options_text_color"
-            android:textSize="@dimen/settings_options_text_size" />
+            style="@style/SettingsScreenOptionsTextView"
+            android:text="@string/dark_theme_tv_text" />
 
         <com.google.android.material.switchmaterial.SwitchMaterial
             android:layout_width="wrap_content"
             android:layout_height="@dimen/settings_options_icon_size"
-            android:layout_gravity="end" />
+            android:layout_gravity="end"
+            tools:checked="true" />
 
     </FrameLayout>
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="@dimen/settings_options_padding"
-        android:paddingBottom="@dimen/settings_options_padding">
+    <FrameLayout style="@style/SettingsScreenOptionsFrameLayout">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:text="@string/share_app_tv_text"
-            android:textColor="@color/settings_options_text_color"
-            android:textSize="@dimen/settings_options_text_size" />
+            style="@style/SettingsScreenOptionsTextView"
+            android:text="@string/share_app_tv_text" />
 
         <ImageView
-            android:layout_width="@dimen/settings_options_icon_size"
-            android:layout_height="@dimen/settings_options_icon_size"
-            android:layout_gravity="end"
-            android:importantForAccessibility="no"
+            style="@style/SettingsScreenOptionsImageView"
             android:src="@drawable/ic_share" />
 
     </FrameLayout>
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="@dimen/settings_options_padding"
-        android:paddingBottom="@dimen/settings_options_padding">
+    <FrameLayout style="@style/SettingsScreenOptionsFrameLayout">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:text="@string/support_tv_text"
-            android:textColor="@color/settings_options_text_color"
-            android:textSize="@dimen/settings_options_text_size" />
+            style="@style/SettingsScreenOptionsTextView"
+            android:text="@string/support_tv_text" />
 
         <ImageView
-            android:layout_width="@dimen/settings_options_icon_size"
-            android:layout_height="@dimen/settings_options_icon_size"
-            android:layout_gravity="end"
-            android:importantForAccessibility="no"
+            style="@style/SettingsScreenOptionsImageView"
             android:src="@drawable/ic_support" />
 
     </FrameLayout>
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="@dimen/settings_options_padding"
-        android:paddingBottom="@dimen/settings_options_padding">
+    <FrameLayout style="@style/SettingsScreenOptionsFrameLayout">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:text="@string/terms_of_use_tv_text"
-            android:textColor="@color/settings_options_text_color"
-            android:textSize="@dimen/settings_options_text_size" />
+            style="@style/SettingsScreenOptionsTextView"
+            android:text="@string/terms_of_use_tv_text" />
 
         <ImageView
-            android:layout_width="@dimen/settings_options_icon_size"
-            android:layout_height="@dimen/settings_options_icon_size"
-            android:layout_gravity="end"
-            android:importantForAccessibility="no"
+            style="@style/SettingsScreenOptionsImageView"
             android:src="@drawable/ic_terms_of_use" />
 
     </FrameLayout>
