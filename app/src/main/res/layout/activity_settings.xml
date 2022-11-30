@@ -23,7 +23,9 @@
 
     </FrameLayout>
 
-    <FrameLayout style="@style/SettingsScreenOptionsFrameLayout">
+    <FrameLayout
+        android:id="@+id/flShareApp"
+        style="@style/SettingsScreenOptionsFrameLayout">
 
         <TextView
             style="@style/SettingsScreenOptionsTextView"
@@ -35,7 +37,9 @@
 
     </FrameLayout>
 
-    <FrameLayout style="@style/SettingsScreenOptionsFrameLayout">
+    <FrameLayout
+        android:id="@+id/flWriteToSupport"
+        style="@style/SettingsScreenOptionsFrameLayout">
 
         <TextView
             style="@style/SettingsScreenOptionsTextView"
@@ -47,7 +51,9 @@
 
     </FrameLayout>
 
-    <FrameLayout style="@style/SettingsScreenOptionsFrameLayout">
+    <FrameLayout
+        android:id="@+id/flTermsOfUse"
+        style="@style/SettingsScreenOptionsFrameLayout">
 
         <TextView
             style="@style/SettingsScreenOptionsTextView"
