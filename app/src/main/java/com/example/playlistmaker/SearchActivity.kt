@@ -20,6 +20,10 @@ class SearchActivity : AppCompatActivity() {
         _binding = ActivitySearchBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        if(savedInstanceState != null) {
+            binding.etSearch.setText(savedInstanceState.getString(SEARCH_TEXT_KEY))
+        }
+
         binding.etSearch.requestFocus()
         showKeyboard()
 
@@ -31,7 +35,6 @@ class SearchActivity : AppCompatActivity() {
             }
 
             override fun afterTextChanged(p0: Editable?) {}
-
         }
 
         binding.etSearch.addTextChangedListener(searchFieldTextWatcher)
@@ -40,6 +43,15 @@ class SearchActivity : AppCompatActivity() {
             clearSearchField()
             hideKeyboard()
         }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putString(SEARCH_TEXT_KEY, binding.etSearch.text.toString())
+    }
+
+    companion object {
+        const val SEARCH_TEXT_KEY = "search_text"
     }
 
     override fun onDestroy() {
