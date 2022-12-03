@@ -7,4 +7,5 @@
     <string name="share_app_tv_text">Поделиться приложением</string>
     <string name="support_tv_text">Написать в поддержку</string>
     <string name="terms_of_use_tv_text">Пользовательское соглашение</string>
+    <string name="hint_search">Поиск</string>
 </resources>
