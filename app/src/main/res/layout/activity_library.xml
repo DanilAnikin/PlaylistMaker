@@ -4,14 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?attr/other_screens_background_color"
     tools:context=".LibraryActivity">
+
+    <com.google.android.material.appbar.AppBarLayout style="@style/AppBarLayout">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            style="@style/Toolbar"
+            app:title="@string/library_screen_toolbar_title" />
+
+    </com.google.android.material.appbar.AppBarLayout>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="LibraryActivity"
         android:layout_gravity="center"
-        android:textSize="35sp"
-        android:textColor="@color/black"/>
+        android:layout_marginTop="56dp"
+        android:text="LibraryActivity"
+        android:textColor="@color/black"
+        android:textSize="35sp" />
 
 </FrameLayout>
