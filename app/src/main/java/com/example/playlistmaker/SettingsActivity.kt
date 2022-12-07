@@ -30,7 +30,7 @@ class SettingsActivity : AppCompatActivity() {
 
     private fun showTermsOfUse() {
         val termsOfUseIntent = Intent(Intent.ACTION_VIEW).apply {
-            data = Uri.parse(TERMS_OF_USE_URL)
+            data = Uri.parse(getString(R.string.terms_of_use_url))
         }
         startActivity(termsOfUseIntent)
     }
@@ -38,9 +38,9 @@ class SettingsActivity : AppCompatActivity() {
     private fun writeToSupport() {
         val writeToSupportIntent = Intent(Intent.ACTION_SENDTO).apply {
             data = Uri.parse("mailto:")
-            putExtra(Intent.EXTRA_EMAIL, arrayOf(SUPPORT_EMAIL))
-            putExtra(Intent.EXTRA_SUBJECT, MAIL_SUBJECT)
-            putExtra(Intent.EXTRA_TEXT, MAIL_TEXT)
+            putExtra(Intent.EXTRA_EMAIL, arrayOf(getString(R.string.support_email)))
+            putExtra(Intent.EXTRA_SUBJECT, getString(R.string.mail_subject))
+            putExtra(Intent.EXTRA_TEXT, getString(R.string.mail_text))
         }
         startActivity(writeToSupportIntent)
     }
@@ -48,22 +48,8 @@ class SettingsActivity : AppCompatActivity() {
     private fun shareApp() {
         val shareIntent = Intent(Intent.ACTION_SEND).apply {
             type = "text/plain"
-            putExtra(Intent.EXTRA_TEXT, SHARE_APP_URL)
+            putExtra(Intent.EXTRA_TEXT, getString(R.string.share_app_url))
         }
         Intent.createChooser(shareIntent, null).also { startActivity(it) }
-    }
-
-
-    override fun onDestroy() {
-        super.onDestroy()
-        _binding = null
-    }
-
-    companion object {
-        const val SHARE_APP_URL = "https://practicum.yandex.ru/android-developer/"
-        const val SUPPORT_EMAIL = "global8iwr@gmail.com"
-        const val MAIL_SUBJECT = "Сообщение разработчикам и разработчицам приложения Playlist Maker"
-        const val MAIL_TEXT = "Спасибо разработчикам и разработчицам за крутое приложение!"
-        const val TERMS_OF_USE_URL = "https://yandex.ru/legal/practicum_offer/"
     }
 }

@@ -16,7 +16,7 @@
         <item name="iconTint">@color/yp_black</item>
         <item name="android:foreground">?attr/selectableItemBackground</item>
         <item name="android:fontFamily">@font/ys_display_medium</item>
-        <item name="android:textFontWeight">500</item>
+        <item name="android:textFontWeight">@integer/font_weight_500</item>
     </style>
 
     <style name="SettingsScreenOptionsFrameLayout">
@@ -31,10 +31,10 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_gravity">center_vertical</item>
-        <item name="android:textColor">@color/settings_options_text_color</item>
+        <item name="android:textColor">?attr/settings_options_text_color</item>
         <item name="android:textSize">@dimen/settings_options_text_size</item>
         <item name="android:fontFamily">@font/ys_display_regular</item>
-        <item name="android:textFontWeight">400</item>
+        <item name="android:textFontWeight">@integer/font_weight_400</item>
     </style>
 
     <style name="SettingsScreenOptionsImageView">
@@ -43,16 +43,25 @@
         <item name="android:layout_gravity">end</item>
     </style>
 
-    <style name="MainScreenBackgroundColor">
-        <item name="android:background">@color/yp_blue</item>
+    <style name="AppBarLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="elevation">0dp</item>
+        <item name="android:background">?attr/other_screens_background_color</item>
     </style>
 
-    <style name="SearchScreenEditTextHintColor">
-        <item name="android:textColorHint">@color/yp_text_gray</item>
+    <style name="MainToolbar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:fontFamily">@font/ys_display_medium</item>
+        <item name="android:textFontWeight">@integer/font_weight_500</item>
     </style>
 
-    <style name="SearchScreenClearBtnBackground">
-        <item name="android:background">@color/yp_light_gray</item>
+    <style name="Toolbar" parent="MainToolbar">
+        <item name="navigationIcon">@drawable/ic_arrow_back</item>
+        <item name="titleTextColor">?attr/toolbar_title_text_color</item>
+
     </style>
 
 </resources>

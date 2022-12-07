@@ -27,9 +27,4 @@ class MainActivity : AppCompatActivity() {
             Intent(this@MainActivity, SettingsActivity::class.java).also { startActivity(it) }
         }
     }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        _binding = null
-    }
 }

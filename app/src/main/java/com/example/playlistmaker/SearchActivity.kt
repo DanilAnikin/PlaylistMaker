@@ -5,15 +5,17 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.view.View
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
+import androidx.core.view.isVisible
 import com.example.playlistmaker.databinding.ActivitySearchBinding
 
 class SearchActivity : AppCompatActivity() {
 
     private var _binding: ActivitySearchBinding? = null
     private val binding get() = requireNotNull(_binding)
+
+    private var searchFieldText: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,7 +33,8 @@ class SearchActivity : AppCompatActivity() {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
 
             override fun onTextChanged(text: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                binding.ivClear.visibility = getClearBtnVisibility()
+                binding.ivClear.isVisible = !binding.etSearch.text.isNullOrEmpty()
+                searchFieldText = binding.etSearch.text.toString()
             }
 
             override fun afterTextChanged(p0: Editable?) {}
@@ -40,27 +43,18 @@ class SearchActivity : AppCompatActivity() {
         binding.etSearch.addTextChangedListener(searchFieldTextWatcher)
 
         binding.ivClear.setOnClickListener {
-            clearSearchField()
+            binding.etSearch.text.clear()
             hideKeyboard()
         }
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        outState.putString(SEARCH_TEXT_KEY, binding.etSearch.text.toString())
+        outState.putString(SEARCH_TEXT_KEY, searchFieldText)
     }
 
     companion object {
         const val SEARCH_TEXT_KEY = "search_text"
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        _binding = null
-    }
-
-    private fun clearSearchField() {
-        binding.etSearch.text.clear()
     }
 
     private fun hideKeyboard() {
@@ -70,13 +64,5 @@ class SearchActivity : AppCompatActivity() {
 
     private fun showKeyboard() {
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE)
-    }
-
-    private fun getClearBtnVisibility(): Int {
-        return if (binding.etSearch.text.isNullOrEmpty()) {
-            View.GONE
-        } else {
-            View.VISIBLE
-        }
     }
 }

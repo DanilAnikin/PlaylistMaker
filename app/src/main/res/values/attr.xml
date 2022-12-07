@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="main_screen_background_color" format="reference"/>
+    <attr name="other_screens_background_color" format="reference"/>
+    <attr name="toolbar_title_text_color" format="reference"/>
+    <attr name="toolbar_icon_color" format="reference"/>
+    <attr name="settings_options_text_color" format="reference"/>
+    <attr name="settings_options_icon_color" format="reference"/>
+    <attr name="search_field_hint_text_color" format="reference"/>
+    <attr name="search_field_background_color" format="reference"/>
+    <attr name="search_field_icons_color" format="reference"/>
+</resources>
