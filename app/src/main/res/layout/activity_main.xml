@@ -6,13 +6,20 @@
     android:background="?attr/main_screen_background_color">
 
     <com.google.android.material.appbar.AppBarLayout
-        style="@style/AppBarLayout"
-        android:background="?attr/main_screen_background_color">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/main_screen_background_color"
+        app:elevation="0dp">
 
         <com.google.android.material.appbar.MaterialToolbar
-            style="@style/MainToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/ys_display_medium"
+            android:textFontWeight="@integer/font_weight_500"
+            android:textSize="22sp"
             app:title="@string/app_name"
             app:titleTextColor="@color/yp_white" />
+
 
     </com.google.android.material.appbar.AppBarLayout>
 

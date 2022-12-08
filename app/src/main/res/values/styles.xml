@@ -43,25 +43,4 @@
         <item name="android:layout_gravity">end</item>
     </style>
 
-    <style name="AppBarLayout">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="elevation">0dp</item>
-        <item name="android:background">?attr/other_screens_background_color</item>
-    </style>
-
-    <style name="MainToolbar">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">match_parent</item>
-        <item name="android:textSize">22sp</item>
-        <item name="android:fontFamily">@font/ys_display_medium</item>
-        <item name="android:textFontWeight">@integer/font_weight_500</item>
-    </style>
-
-    <style name="Toolbar" parent="MainToolbar">
-        <item name="navigationIcon">@drawable/ic_arrow_back</item>
-        <item name="titleTextColor">?attr/toolbar_title_text_color</item>
-
-    </style>
-
 </resources>

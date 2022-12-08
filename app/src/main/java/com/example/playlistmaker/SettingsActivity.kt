@@ -4,16 +4,22 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import com.example.playlistmaker.databinding.ActivitySettingsBinding
 
 class SettingsActivity : AppCompatActivity() {
-    private var _binding: ActivitySettingsBinding? = null
-    private val binding get() = requireNotNull(_binding)
+
+    private lateinit var binding: ActivitySettingsBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        _binding = ActivitySettingsBinding.inflate(layoutInflater)
+        binding = ActivitySettingsBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val toolbar = binding.toolbarInclude.toolbar
+        toolbar.title = getString(R.string.settings_screen_toolbar_title)
+        setSupportActionBar(toolbar)
+        toolbar.setNavigationOnClickListener { finish() }
 
         binding.flShareApp.setOnClickListener {
             shareApp()
@@ -26,6 +32,23 @@ class SettingsActivity : AppCompatActivity() {
         binding.flTermsOfUse.setOnClickListener {
             showTermsOfUse()
         }
+
+        if (isCurrentAppThemeDark()) {
+            binding.switcherDarkTheme.isChecked = true
+        }
+
+        binding.switcherDarkTheme.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            } else {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            }
+        }
+
+    }
+
+    private fun isCurrentAppThemeDark(): Boolean {
+        return AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES
     }
 
     private fun showTermsOfUse() {
