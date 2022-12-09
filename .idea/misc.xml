@@ -20,7 +20,11 @@
         <entry key="..\:/Users/danil/AndroidProjs/PlaylistMaker/app/src/main/res/drawable/ic_share.xml" value="0.1555" />
         <entry key="..\:/Users/danil/AndroidProjs/PlaylistMaker/app/src/main/res/drawable/ic_support.xml" value="0.1555" />
         <entry key="..\:/Users/danil/AndroidProjs/PlaylistMaker/app/src/main/res/drawable/ic_terms_of_use.xml" value="0.1555" />
+        <entry key="..\:/Users/danil/AndroidProjs/PlaylistMaker/app/src/main/res/drawable/main_screen_btn_ripple.xml" value="0.134" />
+        <entry key="..\:/Users/danil/AndroidProjs/PlaylistMaker/app/src/main/res/drawable/main_screen_btn_shape.xml" value="0.121" />
+        <entry key="..\:/Users/danil/AndroidProjs/PlaylistMaker/app/src/main/res/drawable/round_corners.xml" value="0.123" />
         <entry key="..\:/Users/danil/AndroidProjs/PlaylistMaker/app/src/main/res/drawable/rounded_edit_text.xml" value="0.159" />
+        <entry key="..\:/Users/danil/AndroidProjs/PlaylistMaker/app/src/main/res/drawable/rounded_ripple.xml" value="0.153" />
         <entry key="..\:/Users/danil/AndroidProjs/PlaylistMaker/app/src/main/res/layout/activity_library.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/danil/AndroidProjs/PlaylistMaker/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Users/danil/AndroidProjs/PlaylistMaker/app/src/main/res/layout/activity_search.xml" value="0.264" />

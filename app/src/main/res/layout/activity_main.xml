@@ -20,7 +20,6 @@
             app:title="@string/app_name"
             app:titleTextColor="@color/yp_white" />
 
-
     </com.google.android.material.appbar.AppBarLayout>
 
     <LinearLayout
