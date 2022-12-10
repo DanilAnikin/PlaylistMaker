@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Theme.PlaylistMaker" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/yp_white</item>
+        <item name="colorPrimary">@color/purple_200</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
         <item name="colorOnPrimary">@color/yp_black</item>
         <!-- Secondary brand color. -->
@@ -12,7 +12,6 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
-        <item name="android:windowFullscreen">true</item>
         <item name="main_screen_background_color">@color/yp_black</item>
         <item name="other_screens_background_color">@color/yp_black</item>
         <item name="toolbar_title_text_color">@color/yp_white</item>
