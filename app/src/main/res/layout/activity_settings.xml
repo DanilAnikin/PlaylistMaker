@@ -25,8 +25,7 @@
                 android:id="@+id/switcherDarkTheme"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/settings_options_icon_size"
-                android:layout_gravity="end"
-                tools:checked="true" />
+                android:layout_gravity="end" />
 
         </FrameLayout>
 
