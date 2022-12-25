@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="medium_text_size">20sp</dimen>
-    <dimen name="nav_btn_corner_radius">16dp</dimen>
+    <dimen name="main_screen_btn_corner_radius">16dp</dimen>
     <dimen name="margin_between_btn">16dp</dimen>
-    <dimen name="nav_btn_text_size">22sp</dimen>
+    <dimen name="main_screen_btn_text_size">22sp</dimen>
     <dimen name="settings_options_text_size">16sp</dimen>
     <dimen name="settings_options_padding">19dp</dimen>
     <dimen name="settings_options_icon_size">24dp</dimen>
+    <dimen name="layout_padding_horizontal">16dp</dimen>
 </resources>
