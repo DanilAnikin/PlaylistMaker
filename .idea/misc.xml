@@ -11,6 +11,7 @@
         <entry key="..\:/Users/danil/AndroidProjs/PlaylistMaker/app/src/main/res/drawable-night/rounded_edit_text.xml" value="0.153" />
         <entry key="..\:/Users/danil/AndroidProjs/PlaylistMaker/app/src/main/res/drawable/edit_text_cursor.xml" value="0.159" />
         <entry key="..\:/Users/danil/AndroidProjs/PlaylistMaker/app/src/main/res/drawable/ic_arrow_back.xml" value="0.153" />
+        <entry key="..\:/Users/danil/AndroidProjs/PlaylistMaker/app/src/main/res/drawable/ic_arrow_forward.xml" value="0.1495" />
         <entry key="..\:/Users/danil/AndroidProjs/PlaylistMaker/app/src/main/res/drawable/ic_clear.xml" value="0.159" />
         <entry key="..\:/Users/danil/AndroidProjs/PlaylistMaker/app/src/main/res/drawable/ic_launcher_background.xml" value="0.153" />
         <entry key="..\:/Users/danil/AndroidProjs/PlaylistMaker/app/src/main/res/drawable/ic_library.xml" value="0.1555" />
@@ -27,10 +28,11 @@
         <entry key="..\:/Users/danil/AndroidProjs/PlaylistMaker/app/src/main/res/drawable/rounded_ripple.xml" value="0.153" />
         <entry key="..\:/Users/danil/AndroidProjs/PlaylistMaker/app/src/main/res/layout/activity_library.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/danil/AndroidProjs/PlaylistMaker/app/src/main/res/layout/activity_main.xml" value="0.264" />
-        <entry key="..\:/Users/danil/AndroidProjs/PlaylistMaker/app/src/main/res/layout/activity_search.xml" value="0.4676524953789279" />
-        <entry key="..\:/Users/danil/AndroidProjs/PlaylistMaker/app/src/main/res/layout/activity_settings.xml" value="0.4" />
+        <entry key="..\:/Users/danil/AndroidProjs/PlaylistMaker/app/src/main/res/layout/activity_search.xml" value="0.4" />
+        <entry key="..\:/Users/danil/AndroidProjs/PlaylistMaker/app/src/main/res/layout/activity_settings.xml" value="0.43771626297577854" />
         <entry key="..\:/Users/danil/AndroidProjs/PlaylistMaker/app/src/main/res/layout/main_layout.xml" value="0.253125" />
         <entry key="..\:/Users/danil/AndroidProjs/PlaylistMaker/app/src/main/res/layout/toolbar.xml" value="0.4" />
+        <entry key="..\:/Users/danil/AndroidProjs/PlaylistMaker/app/src/main/res/layout/track_item.xml" value="0.264" />
       </map>
     </option>
   </component>
