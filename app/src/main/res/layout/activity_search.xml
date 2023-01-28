@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?attr/other_screens_background_color"
+    android:orientation="vertical"
     tools:context=".SearchActivity">
 
     <include
@@ -12,10 +13,9 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
+        android:layout_height="match_parent"
         android:orientation="vertical"
-        android:paddingHorizontal="@dimen/layout_padding_horizontal"
+        android:paddingTop="10dp"
         tools:context=".SearchActivity">
 
         <FrameLayout
@@ -23,7 +23,8 @@
             android:layout_height="wrap_content"
             android:background="@drawable/rounded_edit_text"
             android:paddingHorizontal="12dp"
-            android:paddingVertical="10dp">
+            android:paddingVertical="10dp"
+            android:layout_marginHorizontal="@dimen/layout_padding_horizontal">
 
             <EditText
                 android:id="@+id/etSearch"
@@ -54,6 +55,12 @@
 
         </FrameLayout>
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvTrackList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"/>
+
     </LinearLayout>
 
-</FrameLayout>
+</LinearLayout>
