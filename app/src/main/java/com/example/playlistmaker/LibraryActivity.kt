@@ -13,9 +13,10 @@ class LibraryActivity : AppCompatActivity() {
         binding = ActivityLibraryBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val toolbar = binding.toolbarInclude.toolbar
-        toolbar.title = getString(R.string.library_screen_toolbar_title)
-        setSupportActionBar(toolbar)
-        toolbar.setNavigationOnClickListener { finish() }
+        binding.toolbarInclude.toolbar.apply {
+            title = getString(R.string.library_screen_toolbar_title)
+            setSupportActionBar(this)
+            setNavigationOnClickListener { finish() }
+        }
     }
 }

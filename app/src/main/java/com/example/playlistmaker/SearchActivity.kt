@@ -8,12 +8,16 @@ import android.text.TextWatcher
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import androidx.core.view.isVisible
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.playlistmaker.adapter.TrackListAdapter
 import com.example.playlistmaker.databinding.ActivitySearchBinding
+import com.example.playlistmaker.model.TrackMockObject
 
 class SearchActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySearchBinding
     private var searchFieldText: String = ""
+    private val trackListAdapter = TrackListAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,10 +28,17 @@ class SearchActivity : AppCompatActivity() {
             binding.etSearch.setText(savedInstanceState.getString(SEARCH_TEXT_KEY))
         }
 
-        val toolbar = binding.toolbarInclude.toolbar
-        toolbar.title = getString(R.string.search_screen_toolbar_title)
-        setSupportActionBar(toolbar)
-        toolbar.setNavigationOnClickListener { finish() }
+        binding.toolbarInclude.toolbar.apply {
+            title = getString(R.string.search_screen_toolbar_title)
+            setSupportActionBar(this)
+            setNavigationOnClickListener { finish() }
+        }
+
+        trackListAdapter.tracks = TrackMockObject.trackList
+        binding.rvTrackList.apply {
+            layoutManager = LinearLayoutManager(this@SearchActivity, LinearLayoutManager.VERTICAL, false)
+            adapter = trackListAdapter
+        }
 
         binding.etSearch.requestFocus()
         showKeyboard()

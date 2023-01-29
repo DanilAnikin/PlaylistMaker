@@ -16,10 +16,11 @@
         <item name="other_screens_background_color">@color/yp_white</item>
         <item name="toolbar_title_text_color">@color/yp_black</item>
         <item name="toolbar_icon_color">@color/yp_black</item>
-        <item name="settings_options_text_color">@color/settings_options_text_color_day</item>
+        <item name="text_color">@color/text_color_day</item>
         <item name="settings_options_icon_color">@color/yp_text_gray</item>
         <item name="search_field_hint_text_color">@color/yp_text_gray</item>
         <item name="search_field_background_color">@color/yp_light_gray</item>
         <item name="search_field_icons_color">@color/yp_text_gray</item>
+        <item name="artist_name_text_color">@color/yp_text_gray</item>
     </style>
 </resources>

@@ -11,6 +11,7 @@
         <entry key="..\:/Users/danil/AndroidProjs/PlaylistMaker/app/src/main/res/drawable-night/rounded_edit_text.xml" value="0.153" />
         <entry key="..\:/Users/danil/AndroidProjs/PlaylistMaker/app/src/main/res/drawable/edit_text_cursor.xml" value="0.159" />
         <entry key="..\:/Users/danil/AndroidProjs/PlaylistMaker/app/src/main/res/drawable/ic_arrow_back.xml" value="0.153" />
+        <entry key="..\:/Users/danil/AndroidProjs/PlaylistMaker/app/src/main/res/drawable/ic_arrow_forward.xml" value="0.1495" />
         <entry key="..\:/Users/danil/AndroidProjs/PlaylistMaker/app/src/main/res/drawable/ic_clear.xml" value="0.159" />
         <entry key="..\:/Users/danil/AndroidProjs/PlaylistMaker/app/src/main/res/drawable/ic_launcher_background.xml" value="0.153" />
         <entry key="..\:/Users/danil/AndroidProjs/PlaylistMaker/app/src/main/res/drawable/ic_library.xml" value="0.1555" />
@@ -20,6 +21,7 @@
         <entry key="..\:/Users/danil/AndroidProjs/PlaylistMaker/app/src/main/res/drawable/ic_share.xml" value="0.1555" />
         <entry key="..\:/Users/danil/AndroidProjs/PlaylistMaker/app/src/main/res/drawable/ic_support.xml" value="0.1555" />
         <entry key="..\:/Users/danil/AndroidProjs/PlaylistMaker/app/src/main/res/drawable/ic_terms_of_use.xml" value="0.1555" />
+        <entry key="..\:/Users/danil/AndroidProjs/PlaylistMaker/app/src/main/res/drawable/ic_track_artwork_placeholder.xml" value="0.1165" />
         <entry key="..\:/Users/danil/AndroidProjs/PlaylistMaker/app/src/main/res/drawable/main_screen_btn_ripple.xml" value="0.134" />
         <entry key="..\:/Users/danil/AndroidProjs/PlaylistMaker/app/src/main/res/drawable/main_screen_btn_shape.xml" value="0.121" />
         <entry key="..\:/Users/danil/AndroidProjs/PlaylistMaker/app/src/main/res/drawable/round_corners.xml" value="0.123" />
@@ -30,7 +32,8 @@
         <entry key="..\:/Users/danil/AndroidProjs/PlaylistMaker/app/src/main/res/layout/activity_search.xml" value="0.264" />
         <entry key="..\:/Users/danil/AndroidProjs/PlaylistMaker/app/src/main/res/layout/activity_settings.xml" value="0.264" />
         <entry key="..\:/Users/danil/AndroidProjs/PlaylistMaker/app/src/main/res/layout/main_layout.xml" value="0.253125" />
-        <entry key="..\:/Users/danil/AndroidProjs/PlaylistMaker/app/src/main/res/layout/toolbar.xml" value="0.25226449275362317" />
+        <entry key="..\:/Users/danil/AndroidProjs/PlaylistMaker/app/src/main/res/layout/toolbar.xml" value="0.4" />
+        <entry key="..\:/Users/danil/AndroidProjs/PlaylistMaker/app/src/main/res/layout/track_item.xml" value="0.264" />
       </map>
     </option>
   </component>
