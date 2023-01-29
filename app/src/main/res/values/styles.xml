@@ -24,8 +24,7 @@
     <style name="SettingsScreenOptionsFrameLayout">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:paddingTop">@dimen/settings_options_padding</item>
-        <item name="android:paddingBottom">@dimen/settings_options_padding</item>
+        <item name="android:paddingVertical">@dimen/settings_options_padding</item>
         <item name="android:foreground">?attr/selectableItemBackground</item>
         <item name="android:paddingStart">@dimen/layout_padding_horizontal</item>
         <item name="android:paddingEnd">18dp</item>
