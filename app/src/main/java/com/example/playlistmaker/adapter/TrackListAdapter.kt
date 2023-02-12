@@ -30,7 +30,7 @@ class TrackListAdapter : RecyclerView.Adapter<TrackListAdapter.TrackViewHolder>(
                 tvArtistNameAndTrackTime.text = itemView.context.getString(
                     R.string.artist_name_and_track_time,
                     track.artistName,
-                    track.trackTime
+                    track.trackTimeMillis
                 )
                 Glide.with(itemView)
                     .load(track.artworkUrl100)

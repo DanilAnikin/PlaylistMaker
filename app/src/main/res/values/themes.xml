@@ -22,5 +22,7 @@
         <item name="search_field_background_color">@color/yp_light_gray</item>
         <item name="search_field_icons_color">@color/yp_text_gray</item>
         <item name="artist_name_text_color">@color/yp_text_gray</item>
+        <item name="search_screen_placeholder_items_color">@color/yp_black</item>
+        <item name="search_screen_update_btn_text_color">@color/yp_white</item>
     </style>
 </resources>
