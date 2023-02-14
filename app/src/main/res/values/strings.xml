@@ -17,4 +17,8 @@
     <string name="search_screen_toolbar_title">Поиск</string>
     <string name="library_screen_toolbar_title">Медиатека</string>
     <string name="artist_name_and_track_time">%s • %s</string>
+    <string name="text_nothing_found">Ничего не нашлось</string>
+    <string name="connection_error_message">Проблемы со связью</string>
+    <string name="connection_error_additional_message">Загрузка не удалась. Проверьте подключение к интернету</string>
+    <string name="update_btn_text">Обновить</string>
 </resources>

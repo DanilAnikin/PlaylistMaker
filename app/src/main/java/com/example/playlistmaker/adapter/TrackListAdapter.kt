@@ -10,7 +10,16 @@ import com.example.playlistmaker.databinding.TrackItemBinding
 import com.example.playlistmaker.model.Track
 
 class TrackListAdapter : RecyclerView.Adapter<TrackListAdapter.TrackViewHolder>() {
-    var tracks: List<Track> = emptyList()
+    private val tracks: MutableList<Track> = mutableListOf()
+    fun setData(newTracks: List<Track>) {
+        tracks.clear()
+        tracks.addAll(newTracks)
+        notifyDataSetChanged()
+    }
+    fun clearData() {
+        tracks.clear()
+        notifyDataSetChanged()
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TrackViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -30,7 +39,7 @@ class TrackListAdapter : RecyclerView.Adapter<TrackListAdapter.TrackViewHolder>(
                 tvArtistNameAndTrackTime.text = itemView.context.getString(
                     R.string.artist_name_and_track_time,
                     track.artistName,
-                    track.trackTime
+                    track.trackTimeMillis
                 )
                 Glide.with(itemView)
                     .load(track.artworkUrl100)
