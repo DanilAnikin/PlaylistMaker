@@ -26,7 +26,7 @@ class SearchActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySearchBinding
     private var searchFieldText: String = ""
     private val trackListAdapter: TrackListAdapter = TrackListAdapter()
-    private val trackList: MutableList<Track> = mutableListOf()
+    private var trackList: MutableList<Track> = mutableListOf()
 
     private val retrofit = Retrofit.Builder()
         .baseUrl(BASE_URL)
@@ -34,7 +34,7 @@ class SearchActivity : AppCompatActivity() {
         .build()
 
     private val iTunesSearchApi = retrofit.create(ITunesSearchApi::class.java)
-    private val simpleDateFormat = SimpleDateFormat("mm:ss", Locale.getDefault())
+    private val simpleDateFormat = SimpleDateFormat(TRACK_TIME_FORMAT_PATTERN, Locale.getDefault())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,10 +53,9 @@ class SearchActivity : AppCompatActivity() {
             setNavigationOnClickListener { finish() }
         }
 
-        trackListAdapter.tracks = trackList
+        trackListAdapter.setData(trackList)
         binding.rvTrackList.apply {
-            layoutManager =
-                LinearLayoutManager(this@SearchActivity, LinearLayoutManager.VERTICAL, false)
+            layoutManager = LinearLayoutManager(this@SearchActivity, LinearLayoutManager.VERTICAL, false)
             adapter = trackListAdapter
         }
 
@@ -76,15 +75,15 @@ class SearchActivity : AppCompatActivity() {
 
         binding.ivClear.setOnClickListener {
             binding.etSearch.text.clear()
-            hideKeyboard()
-            trackList.clear()
-            trackListAdapter.notifyDataSetChanged()
+            trackListAdapter.clearData()
             hidePlaceholder()
+            hideKeyboard()
         }
 
         binding.etSearch.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
                 findTracks()
+                hideKeyboard()
                 return@setOnEditorActionListener true
             }
             return@setOnEditorActionListener false
@@ -114,13 +113,11 @@ class SearchActivity : AppCompatActivity() {
                 }
                 hidePlaceholder()
                 if (response.body()?.results?.isNotEmpty() == true) {
-                    trackList.clear()
-                    trackList.addAll(response.body()!!.results)
+                    trackList = response.body()!!.results.toMutableList()
                     trackList.forEach { track ->
-                        track.trackTimeMillis =
-                            simpleDateFormat.format(track.trackTimeMillis.toLong())
+                        track.trackTimeMillis = simpleDateFormat.format(track.trackTimeMillis.toLong())
                     }
-                    trackListAdapter.notifyDataSetChanged()
+                    trackListAdapter.setData(trackList)
                     binding.rvTrackList.scrollToPosition(0)
                 } else {
                     showPlaceholder(
@@ -151,8 +148,7 @@ class SearchActivity : AppCompatActivity() {
     }
 
     private fun showPlaceholder(iconId: Int, message: String, additionalMessage: String = "") {
-        trackList.clear()
-        trackListAdapter.notifyDataSetChanged()
+        trackListAdapter.clearData()
         binding.apply {
             llPlaceHolder.visibility = View.VISIBLE
             ivPlaceholder.setImageResource(iconId)
@@ -173,8 +169,7 @@ class SearchActivity : AppCompatActivity() {
     }
 
     private fun hideKeyboard() {
-        val inputMethodManager =
-            getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
+        val inputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
         inputMethodManager?.hideSoftInputFromWindow(binding.ivClear.windowToken, 0)
     }
 
@@ -185,5 +180,6 @@ class SearchActivity : AppCompatActivity() {
     companion object {
         const val SEARCH_TEXT_KEY = "search_text"
         const val BASE_URL = "https://itunes.apple.com"
+        const val TRACK_TIME_FORMAT_PATTERN = "mm:ss"
     }
 }

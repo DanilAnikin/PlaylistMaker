@@ -8,4 +8,5 @@
     <dimen name="settings_options_padding">19dp</dimen>
     <dimen name="settings_options_icon_size">24dp</dimen>
     <dimen name="layout_padding_horizontal">16dp</dimen>
+    <dimen name="search_screen_placeholder_margin_top">86dp</dimen>
 </resources>

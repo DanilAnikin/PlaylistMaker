@@ -10,7 +10,16 @@ import com.example.playlistmaker.databinding.TrackItemBinding
 import com.example.playlistmaker.model.Track
 
 class TrackListAdapter : RecyclerView.Adapter<TrackListAdapter.TrackViewHolder>() {
-    var tracks: List<Track> = emptyList()
+    private val tracks: MutableList<Track> = mutableListOf()
+    fun setData(newTracks: List<Track>) {
+        tracks.clear()
+        tracks.addAll(newTracks)
+        notifyDataSetChanged()
+    }
+    fun clearData() {
+        tracks.clear()
+        notifyDataSetChanged()
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TrackViewHolder {
         val inflater = LayoutInflater.from(parent.context)
