@@ -89,7 +89,7 @@ class SearchActivity : AppCompatActivity() {
             return@setOnEditorActionListener false
         }
 
-        binding.btnPlaceholderUpdate.setOnClickListener {
+        binding.placeholder.btnPlaceholderUpdate.setOnClickListener {
             findTracks()
         }
     }
@@ -138,7 +138,8 @@ class SearchActivity : AppCompatActivity() {
     }
 
     private fun hidePlaceholder() {
-        binding.apply {
+        binding.placeholder.apply {
+            nsvPlaceholder.visibility = View.GONE
             llPlaceHolder.visibility = View.GONE
             ivPlaceholder.visibility = View.GONE
             tvPlaceholderMessage.visibility = View.GONE
@@ -149,7 +150,8 @@ class SearchActivity : AppCompatActivity() {
 
     private fun showPlaceholder(iconId: Int, message: String, additionalMessage: String = "") {
         trackListAdapter.clearData()
-        binding.apply {
+        binding.placeholder.apply {
+            nsvPlaceholder.visibility = View.VISIBLE
             llPlaceHolder.visibility = View.VISIBLE
             ivPlaceholder.setImageResource(iconId)
             ivPlaceholder.visibility = View.VISIBLE

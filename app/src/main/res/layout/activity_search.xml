@@ -68,57 +68,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
-            <androidx.core.widget.NestedScrollView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <LinearLayout
-                    android:id="@+id/llPlaceHolder"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/search_screen_placeholder_margin_top"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:paddingHorizontal="24dp"
-                    android:visibility="gone">
-
-                    <ImageView
-                        android:id="@+id/ivPlaceholder"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:visibility="gone"
-                        tools:src="@drawable/ic_nothing_found_placeholder" />
-
-                    <TextView
-                        android:id="@+id/tvPlaceholderMessage"
-                        style="@style/SearchScreenPlaceholderText"
-                        android:visibility="gone"
-                        tools:text="@string/text_nothing_found" />
-
-                    <TextView
-                        android:id="@+id/tvPlaceholderAdditionalMessage"
-                        style="@style/SearchScreenPlaceholderText"
-                        android:visibility="gone"
-                        tools:text="@string/connection_error_message" />
-
-                    <Button
-                        android:id="@+id/btnPlaceholderUpdate"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="24dp"
-                        android:backgroundTint="?attr/search_screen_placeholder_items_color"
-                        android:fontFamily="@font/ys_display_medium"
-                        android:text="@string/update_btn_text"
-                        android:textAllCaps="false"
-                        android:textColor="?attr/search_screen_update_btn_text_color"
-                        android:textFontWeight="@integer/font_weight_500"
-                        android:textSize="14sp"
-                        android:visibility="gone"
-                        app:cornerRadius="54dp" />
-
-                </LinearLayout>
-
-            </androidx.core.widget.NestedScrollView>
+            <include
+                android:id="@+id/placeholder"
+                layout="@layout/search_result_placeholder"/>
 
         </FrameLayout>
     </LinearLayout>
