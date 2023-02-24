@@ -4,7 +4,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.content.edit
 import com.example.playlistmaker.databinding.ActivitySettingsBinding
 
 class SettingsActivity : AppCompatActivity() {
@@ -33,22 +33,12 @@ class SettingsActivity : AppCompatActivity() {
             showTermsOfUse()
         }
 
-        if (isCurrentAppThemeDark()) {
-            binding.switcherDarkTheme.isChecked = true
+        val sharedPrefs = getSharedPreferences(App.PLAYLIST_MAKER_SHARED_PREFS, MODE_PRIVATE)
+        binding.switcherDarkTheme.isChecked = (applicationContext as App).darkTheme
+        binding.switcherDarkTheme.setOnCheckedChangeListener { _, checked ->
+            (applicationContext as App).switchTheme(checked)
+            sharedPrefs.edit { putBoolean(App.DARK_THEME_KEY, checked) }
         }
-
-        binding.switcherDarkTheme.setOnCheckedChangeListener { _, isChecked ->
-            if (isChecked) {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-            } else {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-            }
-        }
-
-    }
-
-    private fun isCurrentAppThemeDark(): Boolean {
-        return AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES
     }
 
     private fun showTermsOfUse() {
