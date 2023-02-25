@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/nsvSearchHistory"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:visibility="gone"
+    android:paddingBottom="16dp">
+
+    <LinearLayout
+        android:id="@+id/llSearchHistory"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            style="@style/SearchScreenPlaceholderText"
+            android:layout_marginTop="26dp"
+            android:text="@string/search_history_title"
+            android:textFontWeight="@integer/font_weight_500" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvTracksHistory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp" />
+
+        <Button
+            android:id="@+id/btnClearHistory"
+            style="@style/SearchScreenButton"
+            android:text="@string/clear_history_btn_text" />
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>
