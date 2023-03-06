@@ -37,9 +37,9 @@ class SearchActivity : AppCompatActivity() {
     private val iTunesSearchApi = retrofit.create(ITunesSearchApi::class.java)
     private val simpleDateFormat = SimpleDateFormat(TRACK_TIME_FORMAT_PATTERN, Locale.getDefault())
 
-    private val searchHistory by lazy {
+    private val searchHistoryStorage by lazy {
         val sharedPrefs = getSharedPreferences(App.PLAYLIST_MAKER_SHARED_PREFS, MODE_PRIVATE)
-        SearchHistory(sharedPrefs)
+        SearchHistoryStorage(sharedPrefs)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -62,7 +62,7 @@ class SearchActivity : AppCompatActivity() {
         binding.etSearch.requestFocus()
         showKeyboard()
 
-        tracksHistoryAdapter.setData(searchHistory.getTracks())
+        tracksHistoryAdapter.setData(searchHistoryStorage.getTracks())
         binding.searchHistory.rvTracksHistory.apply {
             layoutManager =
                 LinearLayoutManager(this@SearchActivity, LinearLayoutManager.VERTICAL, false)
@@ -71,14 +71,14 @@ class SearchActivity : AppCompatActivity() {
         showHistory()
 
         binding.searchHistory.btnClearHistory.setOnClickListener {
-            searchHistory.clear()
+            searchHistoryStorage.clear()
             tracksHistoryAdapter.clearData()
             hideHistory()
         }
 
         trackListAdapter.setData(trackList)
         trackListAdapter.onTrackClickListener = { track ->
-            searchHistory.addTrack(track)
+            searchHistoryStorage.addTrack(track)
         }
         binding.rvTrackList.apply {
             layoutManager =
@@ -133,7 +133,7 @@ class SearchActivity : AppCompatActivity() {
     }
 
     private fun showHistory() {
-        tracksHistoryAdapter.setData(searchHistory.getTracks())
+        tracksHistoryAdapter.setData(searchHistoryStorage.getTracks())
         if (!tracksHistoryAdapter.isDataEmpty()) {
             trackListAdapter.clearData()
             binding.rvTrackList.visibility = View.GONE

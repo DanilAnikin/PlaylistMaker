@@ -1,16 +1,29 @@
 package com.example.playlistmaker
 
 import android.app.Application
+import android.content.SharedPreferences
+import android.content.res.Configuration
+import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.appcompat.app.AppCompatDelegate
 
 class App: Application() {
     var darkTheme = false
+    private lateinit var sharedPrefs: SharedPreferences
 
     override fun onCreate() {
         super.onCreate()
-        val sharedPrefs = getSharedPreferences(PLAYLIST_MAKER_SHARED_PREFS, MODE_PRIVATE)
-        darkTheme = sharedPrefs.getBoolean(DARK_THEME_KEY, false)
-        switchTheme(darkTheme)
+        sharedPrefs = getSharedPreferences(PLAYLIST_MAKER_SHARED_PREFS, MODE_PRIVATE)
+        if(sharedPrefs.contains(DARK_THEME_KEY)) {
+            darkTheme = sharedPrefs.getBoolean(DARK_THEME_KEY, false)
+            switchTheme(darkTheme)
+        } else {
+            darkTheme = isSystemThemeDark()
+        }
+    }
+
+    private fun isSystemThemeDark(): Boolean {
+        return resources.configuration.uiMode and
+                Configuration.UI_MODE_NIGHT_MASK == UI_MODE_NIGHT_YES
     }
 
     fun switchTheme(darkThemeEnabled: Boolean) {
