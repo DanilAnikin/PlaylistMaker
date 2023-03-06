@@ -11,6 +11,7 @@ import com.example.playlistmaker.model.Track
 
 class TrackListAdapter : RecyclerView.Adapter<TrackListAdapter.TrackViewHolder>() {
     private val tracks: MutableList<Track> = mutableListOf()
+
     fun setData(newTracks: List<Track>) {
         tracks.clear()
         tracks.addAll(newTracks)
@@ -21,13 +22,19 @@ class TrackListAdapter : RecyclerView.Adapter<TrackListAdapter.TrackViewHolder>(
         notifyDataSetChanged()
     }
 
+    fun isDataEmpty(): Boolean = tracks.isEmpty()
+
+    var onTrackClickListener: ((Track) -> Unit)? = null
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TrackViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         return TrackViewHolder(TrackItemBinding.inflate(inflater, parent, false))
     }
 
     override fun onBindViewHolder(holder: TrackViewHolder, position: Int) {
-        holder.bind(tracks[position])
+        val track = tracks[position]
+        holder.bind(track)
+        holder.itemView.setOnClickListener { onTrackClickListener?.invoke(track) }
     }
 
     override fun getItemCount(): Int = tracks.size

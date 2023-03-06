@@ -56,4 +56,18 @@
         <item name="android:layout_marginTop">16dp</item>
         <item name="android:gravity">center</item>
     </style>
+
+    <style name="SearchScreenButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">24dp</item>
+        <item name="android:backgroundTint">?attr/search_screen_placeholder_items_color</item>
+        <item name="android:fontFamily">@font/ys_display_medium</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">?attr/search_screen_btn_text_color</item>
+        <item name="android:textFontWeight">@integer/font_weight_500</item>
+        <item name="android:textSize">14sp</item>
+        <item name="cornerRadius">54dp</item>
+    </style>
+
 </resources>

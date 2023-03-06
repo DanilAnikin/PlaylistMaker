@@ -27,6 +27,7 @@ class SearchActivity : AppCompatActivity() {
     private var searchFieldText: String = ""
     private val trackListAdapter: TrackListAdapter = TrackListAdapter()
     private var trackList: MutableList<Track> = mutableListOf()
+    private val tracksHistoryAdapter: TrackListAdapter = TrackListAdapter()
 
     private val retrofit = Retrofit.Builder()
         .baseUrl(BASE_URL)
@@ -35,6 +36,11 @@ class SearchActivity : AppCompatActivity() {
 
     private val iTunesSearchApi = retrofit.create(ITunesSearchApi::class.java)
     private val simpleDateFormat = SimpleDateFormat(TRACK_TIME_FORMAT_PATTERN, Locale.getDefault())
+
+    private val searchHistoryStorage by lazy {
+        val sharedPrefs = getSharedPreferences(App.PLAYLIST_MAKER_SHARED_PREFS, MODE_PRIVATE)
+        SearchHistoryStorage(sharedPrefs)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,14 +59,40 @@ class SearchActivity : AppCompatActivity() {
             setNavigationOnClickListener { finish() }
         }
 
+        binding.etSearch.requestFocus()
+        showKeyboard()
+
+        tracksHistoryAdapter.setData(searchHistoryStorage.getTracks())
+        binding.searchHistory.rvTracksHistory.apply {
+            layoutManager =
+                LinearLayoutManager(this@SearchActivity, LinearLayoutManager.VERTICAL, false)
+            adapter = tracksHistoryAdapter
+        }
+        showHistory()
+
+        binding.searchHistory.btnClearHistory.setOnClickListener {
+            searchHistoryStorage.clear()
+            tracksHistoryAdapter.clearData()
+            hideHistory()
+        }
+
         trackListAdapter.setData(trackList)
+        trackListAdapter.onTrackClickListener = { track ->
+            searchHistoryStorage.addTrack(track)
+        }
         binding.rvTrackList.apply {
-            layoutManager = LinearLayoutManager(this@SearchActivity, LinearLayoutManager.VERTICAL, false)
+            layoutManager =
+                LinearLayoutManager(this@SearchActivity, LinearLayoutManager.VERTICAL, false)
             adapter = trackListAdapter
         }
 
-        binding.etSearch.requestFocus()
-        showKeyboard()
+        binding.etSearch.setOnFocusChangeListener { _, hasFocus ->
+            if (hasFocus && binding.etSearch.text.isEmpty()) {
+                showHistory()
+            } else {
+                hideHistory()
+            }
+        }
 
         binding.etSearch.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
@@ -68,6 +100,12 @@ class SearchActivity : AppCompatActivity() {
             override fun onTextChanged(text: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 binding.ivClear.isVisible = !binding.etSearch.text.isNullOrEmpty()
                 searchFieldText = binding.etSearch.text.toString()
+
+                if (binding.etSearch.hasFocus() && text?.isEmpty() == true) {
+                    showHistory()
+                } else {
+                    hideHistory()
+                }
             }
 
             override fun afterTextChanged(p0: Editable?) {}
@@ -89,9 +127,24 @@ class SearchActivity : AppCompatActivity() {
             return@setOnEditorActionListener false
         }
 
-        binding.btnPlaceholderUpdate.setOnClickListener {
+        binding.placeholder.btnPlaceholderUpdate.setOnClickListener {
             findTracks()
         }
+    }
+
+    private fun showHistory() {
+        tracksHistoryAdapter.setData(searchHistoryStorage.getTracks())
+        if (!tracksHistoryAdapter.isDataEmpty()) {
+            trackListAdapter.clearData()
+            binding.rvTrackList.visibility = View.GONE
+            binding.searchHistory.nsvSearchHistory.visibility = View.VISIBLE
+            hidePlaceholder()
+        }
+    }
+
+    private fun hideHistory() {
+        binding.searchHistory.nsvSearchHistory.visibility = View.GONE
+        binding.rvTrackList.visibility = View.VISIBLE
     }
 
     private fun findTracks() {
@@ -115,7 +168,8 @@ class SearchActivity : AppCompatActivity() {
                 if (response.body()?.results?.isNotEmpty() == true) {
                     trackList = response.body()!!.results.toMutableList()
                     trackList.forEach { track ->
-                        track.trackTimeMillis = simpleDateFormat.format(track.trackTimeMillis.toLong())
+                        track.trackTimeMillis =
+                            simpleDateFormat.format(track.trackTimeMillis.toLong())
                     }
                     trackListAdapter.setData(trackList)
                     binding.rvTrackList.scrollToPosition(0)
@@ -138,7 +192,8 @@ class SearchActivity : AppCompatActivity() {
     }
 
     private fun hidePlaceholder() {
-        binding.apply {
+        binding.placeholder.apply {
+            nsvPlaceholder.visibility = View.GONE
             llPlaceHolder.visibility = View.GONE
             ivPlaceholder.visibility = View.GONE
             tvPlaceholderMessage.visibility = View.GONE
@@ -149,7 +204,8 @@ class SearchActivity : AppCompatActivity() {
 
     private fun showPlaceholder(iconId: Int, message: String, additionalMessage: String = "") {
         trackListAdapter.clearData()
-        binding.apply {
+        binding.placeholder.apply {
+            nsvPlaceholder.visibility = View.VISIBLE
             llPlaceHolder.visibility = View.VISIBLE
             ivPlaceholder.setImageResource(iconId)
             ivPlaceholder.visibility = View.VISIBLE
@@ -169,7 +225,8 @@ class SearchActivity : AppCompatActivity() {
     }
 
     private fun hideKeyboard() {
-        val inputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
+        val inputMethodManager =
+            getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
         inputMethodManager?.hideSoftInputFromWindow(binding.ivClear.windowToken, 0)
     }
 
