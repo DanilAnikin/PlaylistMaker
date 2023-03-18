@@ -23,13 +23,13 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/layout_padding_horizontal"
             android:background="@drawable/rounded_edit_text"
-            android:paddingHorizontal="12dp"
-            android:paddingVertical="10dp">
+            android:paddingHorizontal="12dp">
 
             <EditText
+                android:paddingVertical="10dp"
                 android:id="@+id/etSearch"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:background="@null"
                 android:drawableStart="@drawable/ic_search_icon"
                 android:drawablePadding="8dp"

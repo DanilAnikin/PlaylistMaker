@@ -9,14 +9,20 @@
         <entry key="..\:/Users/danil/AndroidProjs/PlaylistMaker/app/src/main/res/drawable-night/ic_support.xml" value="0.1285" />
         <entry key="..\:/Users/danil/AndroidProjs/PlaylistMaker/app/src/main/res/drawable-night/ic_terms_of_use.xml" value="0.1285" />
         <entry key="..\:/Users/danil/AndroidProjs/PlaylistMaker/app/src/main/res/drawable-night/rounded_edit_text.xml" value="0.153" />
+        <entry key="..\:/Users/danil/AndroidProjs/PlaylistMaker/app/src/main/res/drawable/audio_player_btn_shape.xml" value="0.1485" />
         <entry key="..\:/Users/danil/AndroidProjs/PlaylistMaker/app/src/main/res/drawable/edit_text_cursor.xml" value="0.159" />
+        <entry key="..\:/Users/danil/AndroidProjs/PlaylistMaker/app/src/main/res/drawable/ic_add_to_favs.xml" value="0.1485" />
+        <entry key="..\:/Users/danil/AndroidProjs/PlaylistMaker/app/src/main/res/drawable/ic_add_to_playlist.xml" value="0.1485" />
         <entry key="..\:/Users/danil/AndroidProjs/PlaylistMaker/app/src/main/res/drawable/ic_arrow_back.xml" value="0.153" />
         <entry key="..\:/Users/danil/AndroidProjs/PlaylistMaker/app/src/main/res/drawable/ic_arrow_forward.xml" value="0.1495" />
         <entry key="..\:/Users/danil/AndroidProjs/PlaylistMaker/app/src/main/res/drawable/ic_clear.xml" value="0.159" />
         <entry key="..\:/Users/danil/AndroidProjs/PlaylistMaker/app/src/main/res/drawable/ic_connection_error_placeholder.xml" value="0.1485" />
+        <entry key="..\:/Users/danil/AndroidProjs/PlaylistMaker/app/src/main/res/drawable/ic_favorite.xml" value="0.1485" />
         <entry key="..\:/Users/danil/AndroidProjs/PlaylistMaker/app/src/main/res/drawable/ic_launcher_background.xml" value="0.153" />
         <entry key="..\:/Users/danil/AndroidProjs/PlaylistMaker/app/src/main/res/drawable/ic_library.xml" value="0.1555" />
+        <entry key="..\:/Users/danil/AndroidProjs/PlaylistMaker/app/src/main/res/drawable/ic_library_add.xml" value="0.1485" />
         <entry key="..\:/Users/danil/AndroidProjs/PlaylistMaker/app/src/main/res/drawable/ic_nothing_found_placeholder.xml" value="0.1485" />
+        <entry key="..\:/Users/danil/AndroidProjs/PlaylistMaker/app/src/main/res/drawable/ic_play_arrow.xml" value="0.1485" />
         <entry key="..\:/Users/danil/AndroidProjs/PlaylistMaker/app/src/main/res/drawable/ic_qwe.xml" value="0.1485" />
         <entry key="..\:/Users/danil/AndroidProjs/PlaylistMaker/app/src/main/res/drawable/ic_search.xml" value="0.1555" />
         <entry key="..\:/Users/danil/AndroidProjs/PlaylistMaker/app/src/main/res/drawable/ic_search_icon.xml" value="0.159" />
@@ -27,9 +33,11 @@
         <entry key="..\:/Users/danil/AndroidProjs/PlaylistMaker/app/src/main/res/drawable/ic_track_artwork_placeholder.xml" value="0.1165" />
         <entry key="..\:/Users/danil/AndroidProjs/PlaylistMaker/app/src/main/res/drawable/main_screen_btn_ripple.xml" value="0.134" />
         <entry key="..\:/Users/danil/AndroidProjs/PlaylistMaker/app/src/main/res/drawable/main_screen_btn_shape.xml" value="0.121" />
+        <entry key="..\:/Users/danil/AndroidProjs/PlaylistMaker/app/src/main/res/drawable/play_btn_shape.xml" value="0.1485" />
         <entry key="..\:/Users/danil/AndroidProjs/PlaylistMaker/app/src/main/res/drawable/round_corners.xml" value="0.123" />
         <entry key="..\:/Users/danil/AndroidProjs/PlaylistMaker/app/src/main/res/drawable/rounded_edit_text.xml" value="0.159" />
         <entry key="..\:/Users/danil/AndroidProjs/PlaylistMaker/app/src/main/res/drawable/rounded_ripple.xml" value="0.153" />
+        <entry key="..\:/Users/danil/AndroidProjs/PlaylistMaker/app/src/main/res/layout/activity_audio_player.xml" value="0.264" />
         <entry key="..\:/Users/danil/AndroidProjs/PlaylistMaker/app/src/main/res/layout/activity_library.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/danil/AndroidProjs/PlaylistMaker/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Users/danil/AndroidProjs/PlaylistMaker/app/src/main/res/layout/activity_search.xml" value="0.264" />
