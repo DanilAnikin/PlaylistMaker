@@ -81,12 +81,12 @@
     <style name="TrackDerailsLabels" parent="AudioPlayerScreenTrackDerails">
         <item name="android:textColor">@color/yp_text_gray</item>
         <item name="android:layout_marginStart">16dp</item>
-        <item name="android:layout_marginTop">17dp</item>
     </style>
 
     <style name="TrackDerailsValues" parent="AudioPlayerScreenTrackDerails">
         <item name="android:textColor">?attr/text_color</item>
         <item name="android:layout_marginEnd">16dp</item>
+        <item name="android:layout_marginTop">17dp</item>
     </style>
 
 </resources>

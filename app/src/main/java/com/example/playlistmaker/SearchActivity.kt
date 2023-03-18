@@ -1,6 +1,7 @@
 package com.example.playlistmaker
 
 import android.content.Context
+import android.content.Intent
 import android.icu.text.SimpleDateFormat
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -63,6 +64,10 @@ class SearchActivity : AppCompatActivity() {
         showKeyboard()
 
         tracksHistoryAdapter.setData(searchHistoryStorage.getTracks())
+        tracksHistoryAdapter.onTrackClickListener = { track ->
+            startAudioPlayerScreen(track)
+        }
+
         binding.searchHistory.rvTracksHistory.apply {
             layoutManager =
                 LinearLayoutManager(this@SearchActivity, LinearLayoutManager.VERTICAL, false)
@@ -79,6 +84,7 @@ class SearchActivity : AppCompatActivity() {
         trackListAdapter.setData(trackList)
         trackListAdapter.onTrackClickListener = { track ->
             searchHistoryStorage.addTrack(track)
+            startAudioPlayerScreen(track)
         }
         binding.rvTrackList.apply {
             layoutManager =
@@ -234,9 +240,17 @@ class SearchActivity : AppCompatActivity() {
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE)
     }
 
+    private fun startAudioPlayerScreen(track: Track) {
+        Intent(this@SearchActivity, AudioPlayerActivity::class.java).also {
+            it.putExtra(TRACK_KEY, track)
+            startActivity(it)
+        }
+    }
+
     companion object {
         const val SEARCH_TEXT_KEY = "search_text"
         const val BASE_URL = "https://itunes.apple.com"
         const val TRACK_TIME_FORMAT_PATTERN = "mm:ss"
+        const val TRACK_KEY = "track_key"
     }
 }

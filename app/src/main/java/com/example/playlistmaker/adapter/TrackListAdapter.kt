@@ -56,7 +56,7 @@ class TrackListAdapter : RecyclerView.Adapter<TrackListAdapter.TrackViewHolder>(
             }
         }
 
-        private companion object {
+        companion object {
             const val ARTWORK_CORNER_RADIUS = 10
         }
     }
