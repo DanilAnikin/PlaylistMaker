@@ -50,14 +50,10 @@ class TrackListAdapter : RecyclerView.Adapter<TrackListAdapter.TrackViewHolder>(
                 )
                 Glide.with(itemView)
                     .load(track.artworkUrl100)
-                    .transform(RoundedCorners(ARTWORK_CORNER_RADIUS))
+                    .transform(RoundedCorners(itemView.resources.getDimensionPixelSize(R.dimen.list_item_cover_corner_radius)))
                     .placeholder(R.drawable.ic_track_artwork_placeholder)
                     .into(ivArtwork)
             }
-        }
-
-        companion object {
-            const val ARTWORK_CORNER_RADIUS = 10
         }
     }
 }

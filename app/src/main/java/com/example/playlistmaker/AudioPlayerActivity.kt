@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
-import com.example.playlistmaker.adapter.TrackListAdapter
 import com.example.playlistmaker.databinding.ActivityAudioPlayerBinding
 import com.example.playlistmaker.model.Track
 
@@ -28,7 +27,7 @@ class AudioPlayerActivity : AppCompatActivity() {
     private fun setTrackDetailsToViews (track: Track) {
         Glide.with(this@AudioPlayerActivity)
             .load(track.getCoverArtworkUrl())
-            .transform(RoundedCorners(TrackListAdapter.TrackViewHolder.ARTWORK_CORNER_RADIUS))
+            .transform(RoundedCorners(resources.getDimensionPixelSize(R.dimen.audio_player_cover_corner_radius)))
             .placeholder(R.drawable.ic_audio_player_cover_placeholder)
             .into(binding.ivCover)
 
