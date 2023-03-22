@@ -162,7 +162,7 @@ class SearchActivity : AppCompatActivity() {
                 call: Call<TracksResponse>,
                 response: Response<TracksResponse>
             ) {
-                if (response.code() != 200) {
+                if (response.code() != 200 && response.code() != 404) {
                     showPlaceholder(
                         R.drawable.ic_connection_error_placeholder,
                         getString(R.string.connection_error_message),
