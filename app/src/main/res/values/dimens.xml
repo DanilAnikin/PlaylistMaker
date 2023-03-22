@@ -9,4 +9,10 @@
     <dimen name="settings_options_icon_size">24dp</dimen>
     <dimen name="layout_padding_horizontal">16dp</dimen>
     <dimen name="search_screen_placeholder_margin_top">86dp</dimen>
+    <dimen name="layout_padding_24dp">24dp</dimen>
+    <dimen name="audio_player_add_buttons_size">51dp</dimen>
+    <dimen name="play_btn_size">83dp</dimen>
+    <dimen name="audio_player_cover_corner_radius">8dp</dimen>
+    <dimen name="list_item_cover_corner_radius">2dp</dimen>
+    <dimen name="text_size_14sp">14sp</dimen>
 </resources>

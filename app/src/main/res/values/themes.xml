@@ -24,5 +24,8 @@
         <item name="artist_name_text_color">@color/yp_text_gray</item>
         <item name="search_screen_placeholder_items_color">@color/yp_black</item>
         <item name="search_screen_btn_text_color">@color/yp_white</item>
+        <item name="audio_player_add_buttons_color">@color/audio_player_add_buttons_light</item>
+        <item name="play_btn_background_color">@color/yp_black</item>
+        <item name="play_btn_arrow_color">@color/yp_white</item>
     </style>
 </resources>
