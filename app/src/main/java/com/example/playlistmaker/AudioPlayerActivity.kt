@@ -24,7 +24,7 @@ class AudioPlayerActivity : AppCompatActivity() {
         setTrackDetailsToViews(track)
     }
 
-    private fun setTrackDetailsToViews (track: Track) {
+    private fun setTrackDetailsToViews(track: Track) {
         Glide.with(this@AudioPlayerActivity)
             .load(track.getCoverArtworkUrl())
             .transform(RoundedCorners(resources.getDimensionPixelSize(R.dimen.audio_player_cover_corner_radius)))
