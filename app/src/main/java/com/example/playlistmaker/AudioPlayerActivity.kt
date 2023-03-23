@@ -2,6 +2,7 @@ package com.example.playlistmaker
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.example.playlistmaker.databinding.ActivityAudioPlayerBinding
@@ -36,7 +37,12 @@ class AudioPlayerActivity : AppCompatActivity() {
             tvArtistName.text = track.artistName
             tvDurationValue.text = track.trackTimeMillis
             tvAlbumValue.text = track.collectionName
-            tvReleaseDateValue.text = track.releaseDate.take(4)
+            if (track.releaseDate != null) {
+                tvReleaseDateValue.text = track.releaseDate.take(4)
+            } else {
+                tvReleaseDateLabel.visibility = View.GONE
+                tvReleaseDateValue.visibility = View.GONE
+            }
             tvGenreValue.text = track.primaryGenreName
             tvCountryValue.text = track.country
             tvTime.text = track.trackTimeMillis

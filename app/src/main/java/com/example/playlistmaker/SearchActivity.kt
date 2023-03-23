@@ -175,7 +175,7 @@ class SearchActivity : AppCompatActivity() {
                     trackList = response.body()!!.results.toMutableList()
                     trackList.forEach { track ->
                         track.trackTimeMillis =
-                            simpleDateFormat.format(track.trackTimeMillis.toLong())
+                            simpleDateFormat.format(track.trackTimeMillis?.toLong() ?: 0)
                     }
                     trackListAdapter.setData(trackList)
                     binding.rvTrackList.scrollToPosition(0)
