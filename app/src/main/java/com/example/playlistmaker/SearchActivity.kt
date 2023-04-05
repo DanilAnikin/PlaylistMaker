@@ -195,7 +195,10 @@ class SearchActivity : AppCompatActivity() {
                 }
                 hidePlaceholder()
                 if (response.body()?.results?.isNotEmpty() == true) {
-                    trackList = response.body()!!.results.toMutableList()
+                    trackList = response.body()!!.results.filter { track ->
+                        track.previewUrl != null
+                    }.toMutableList()
+
                     trackList.forEach { track ->
                         track.trackTimeMillis =
                             simpleDateFormat.format(track.trackTimeMillis?.toLong() ?: 0)

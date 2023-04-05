@@ -13,7 +13,8 @@ data class Track(
     val collectionName: String, // album name
     val releaseDate: String?,
     val primaryGenreName: String,
-    val country: String
+    val country: String,
+    val previewUrl: String?
 ): Parcelable {
     fun getCoverArtworkUrl() = artworkUrl100.replaceAfterLast("/", "512x512bb.jpg")
 }

@@ -26,6 +26,6 @@
         <item name="search_screen_btn_text_color">@color/yp_black</item>
         <item name="audio_player_add_buttons_color">@color/audio_player_add_buttons_dark</item>
         <item name="play_btn_background_color">@color/yp_white</item>
-        <item name="play_btn_arrow_color">@color/yp_black</item>
+        <item name="playback_control_icon_color">@color/yp_black</item>
     </style>
 </resources>

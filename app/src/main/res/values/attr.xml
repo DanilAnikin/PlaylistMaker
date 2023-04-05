@@ -14,5 +14,5 @@
     <attr name="search_screen_btn_text_color" format="reference" />
     <attr name="audio_player_add_buttons_color" format="reference" />
     <attr name="play_btn_background_color" format="reference" />
-    <attr name="play_btn_arrow_color" format="reference" />
+    <attr name="playback_control_icon_color" format="reference" />
 </resources>
