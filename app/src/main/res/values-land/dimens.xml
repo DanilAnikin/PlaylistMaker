@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="search_screen_placeholder_margin_top">15dp</dimen>
+    <dimen name="progress_bar_margin_top">70dp</dimen>
 </resources>

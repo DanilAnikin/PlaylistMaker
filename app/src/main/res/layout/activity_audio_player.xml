@@ -9,7 +9,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingBottom="16dp">
 
         <include
             android:id="@+id/toolbarInclude"
@@ -37,7 +38,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.48" />
+            app:layout_constraintGuide_percent="0.5" />
 
         <ImageView
             android:id="@+id/ivCover"
@@ -86,14 +87,14 @@
             android:background="@drawable/audio_player_btn_shape"
             android:backgroundTint="?attr/audio_player_add_buttons_color"
             android:src="@drawable/ic_add_to_playlist"
-            app:layout_constraintBottom_toBottomOf="@id/btnPlay"
-            app:layout_constraintEnd_toStartOf="@id/btnPlay"
+            app:layout_constraintBottom_toBottomOf="@id/btnPlaybackControl"
+            app:layout_constraintEnd_toStartOf="@id/btnPlaybackControl"
             app:layout_constraintHorizontal_chainStyle="spread_inside"
             app:layout_constraintStart_toStartOf="@id/leftGuideline"
-            app:layout_constraintTop_toTopOf="@id/btnPlay" />
+            app:layout_constraintTop_toTopOf="@id/btnPlaybackControl" />
 
         <ImageButton
-            android:id="@+id/btnPlay"
+            android:id="@+id/btnPlaybackControl"
             android:layout_width="@dimen/play_btn_size"
             android:layout_height="@dimen/play_btn_size"
             android:layout_marginTop="38dp"
@@ -111,10 +112,10 @@
             android:background="@drawable/audio_player_btn_shape"
             android:backgroundTint="?attr/audio_player_add_buttons_color"
             android:src="@drawable/ic_add_to_favorites"
-            app:layout_constraintBottom_toBottomOf="@id/btnPlay"
+            app:layout_constraintBottom_toBottomOf="@id/btnPlaybackControl"
             app:layout_constraintEnd_toEndOf="@id/rightGuideline"
-            app:layout_constraintStart_toEndOf="@id/btnPlay"
-            app:layout_constraintTop_toTopOf="@id/btnPlay" />
+            app:layout_constraintStart_toEndOf="@id/btnPlaybackControl"
+            app:layout_constraintTop_toTopOf="@id/btnPlaybackControl" />
 
         <TextView
             android:id="@+id/tvTime"
@@ -127,8 +128,8 @@
             android:textSize="@dimen/text_size_14sp"
             app:layout_constraintEnd_toEndOf="@id/rightGuideline"
             app:layout_constraintStart_toStartOf="@id/leftGuideline"
-            app:layout_constraintTop_toBottomOf="@id/btnPlay"
-            tools:text="0:30" />
+            app:layout_constraintTop_toBottomOf="@id/btnPlaybackControl"
+            tools:text="00:00" />
 
         <androidx.constraintlayout.widget.Barrier
             android:id="@+id/barrier"

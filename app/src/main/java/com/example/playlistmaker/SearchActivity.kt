@@ -5,11 +5,12 @@ import android.content.Intent
 import android.icu.text.SimpleDateFormat
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import android.view.WindowManager
-import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -43,6 +44,10 @@ class SearchActivity : AppCompatActivity() {
         SearchHistoryStorage(sharedPrefs)
     }
 
+    private val handler = Handler(Looper.getMainLooper())
+    private val searchRunnable = Runnable { findTracks() }
+    private var isClickAllowed = true
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySearchBinding.inflate(layoutInflater)
@@ -65,14 +70,16 @@ class SearchActivity : AppCompatActivity() {
 
         tracksHistoryAdapter.setData(searchHistoryStorage.getTracks())
         tracksHistoryAdapter.onTrackClickListener = { track ->
-            startAudioPlayerScreen(track)
+            if (trackClickDebounce()) {
+                startAudioPlayerScreen(track)
+            }
         }
-
         binding.searchHistory.rvTracksHistory.apply {
             layoutManager =
                 LinearLayoutManager(this@SearchActivity, LinearLayoutManager.VERTICAL, false)
             adapter = tracksHistoryAdapter
         }
+
         showHistory()
 
         binding.searchHistory.btnClearHistory.setOnClickListener {
@@ -83,8 +90,10 @@ class SearchActivity : AppCompatActivity() {
 
         trackListAdapter.setData(trackList)
         trackListAdapter.onTrackClickListener = { track ->
-            searchHistoryStorage.addTrack(track)
-            startAudioPlayerScreen(track)
+            if(trackClickDebounce()) {
+                searchHistoryStorage.addTrack(track)
+                startAudioPlayerScreen(track)
+            }
         }
         binding.rvTrackList.apply {
             layoutManager =
@@ -112,6 +121,8 @@ class SearchActivity : AppCompatActivity() {
                 } else {
                     hideHistory()
                 }
+
+                searchDebounce()
             }
 
             override fun afterTextChanged(p0: Editable?) {}
@@ -124,18 +135,23 @@ class SearchActivity : AppCompatActivity() {
             hideKeyboard()
         }
 
-        binding.etSearch.setOnEditorActionListener { _, actionId, _ ->
-            if (actionId == EditorInfo.IME_ACTION_DONE) {
-                findTracks()
-                hideKeyboard()
-                return@setOnEditorActionListener true
-            }
-            return@setOnEditorActionListener false
-        }
-
         binding.placeholder.btnPlaceholderUpdate.setOnClickListener {
             findTracks()
         }
+    }
+
+    private fun trackClickDebounce(): Boolean {
+        val current = isClickAllowed
+        if (current) {
+            isClickAllowed = false
+            handler.postDelayed({ isClickAllowed = true }, TRACK_CLICK_DEBOUNCE_DELAY)
+        }
+        return current
+    }
+
+    private fun searchDebounce() {
+        handler.removeCallbacks(searchRunnable)
+        handler.postDelayed(searchRunnable, SEARCH_DEBOUNCE_DELAY)
     }
 
     private fun showHistory() {
@@ -154,14 +170,21 @@ class SearchActivity : AppCompatActivity() {
     }
 
     private fun findTracks() {
-        if (searchFieldText.isEmpty()) {
-            return
-        }
+        if (searchFieldText.isEmpty()) return
+
+        hideKeyboard()
+        hidePlaceholder()
+        binding.rvTrackList.visibility = View.GONE
+        binding.pbSearchProgress.visibility = View.VISIBLE
+
         iTunesSearchApi.getTracks(searchFieldText).enqueue(object : Callback<TracksResponse> {
             override fun onResponse(
                 call: Call<TracksResponse>,
                 response: Response<TracksResponse>
             ) {
+                binding.pbSearchProgress.visibility = View.GONE
+                binding.rvTrackList.visibility = View.VISIBLE
+
                 if (response.code() != 200 && response.code() != 404) {
                     showPlaceholder(
                         R.drawable.ic_connection_error_placeholder,
@@ -172,10 +195,13 @@ class SearchActivity : AppCompatActivity() {
                 }
                 hidePlaceholder()
                 if (response.body()?.results?.isNotEmpty() == true) {
-                    trackList = response.body()!!.results.toMutableList()
+                    trackList = response.body()!!.results.filter { track ->
+                        track.previewUrl != null
+                    }.toMutableList()
+
                     trackList.forEach { track ->
                         track.trackTimeMillis =
-                            simpleDateFormat.format(track.trackTimeMillis.toLong())
+                            simpleDateFormat.format(track.trackTimeMillis?.toLong() ?: 0)
                     }
                     trackListAdapter.setData(trackList)
                     binding.rvTrackList.scrollToPosition(0)
@@ -188,6 +214,7 @@ class SearchActivity : AppCompatActivity() {
             }
 
             override fun onFailure(call: Call<TracksResponse>, t: Throwable) {
+                binding.pbSearchProgress.visibility = View.GONE
                 showPlaceholder(
                     R.drawable.ic_connection_error_placeholder,
                     getString(R.string.connection_error_message),
@@ -252,5 +279,7 @@ class SearchActivity : AppCompatActivity() {
         const val BASE_URL = "https://itunes.apple.com"
         const val TRACK_TIME_FORMAT_PATTERN = "mm:ss"
         const val TRACK_KEY = "track_key"
+        const val SEARCH_DEBOUNCE_DELAY = 2000L
+        const val TRACK_CLICK_DEBOUNCE_DELAY = 1000L
     }
 }

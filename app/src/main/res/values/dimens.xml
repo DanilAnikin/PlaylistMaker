@@ -15,4 +15,6 @@
     <dimen name="audio_player_cover_corner_radius">8dp</dimen>
     <dimen name="list_item_cover_corner_radius">2dp</dimen>
     <dimen name="text_size_14sp">14sp</dimen>
+    <dimen name="progress_bar_margin_top">148dp</dimen>
+    <dimen name="progress_bar_size">44dp</dimen>
 </resources>

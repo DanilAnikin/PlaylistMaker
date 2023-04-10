@@ -15,4 +15,5 @@
     <color name="yp_yellow">#FCD452</color>
     <color name="audio_player_add_buttons_light">#401A1B22</color>
     <color name="audio_player_add_buttons_dark">#40FFFFFF</color>
+    <color name="progress_bar">#6200EE</color>
 </resources>
