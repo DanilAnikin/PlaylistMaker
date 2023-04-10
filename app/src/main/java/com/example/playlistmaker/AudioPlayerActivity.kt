@@ -16,7 +16,7 @@ import java.util.*
 class AudioPlayerActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAudioPlayerBinding
     private val trackPlayer = MediaPlayer()
-    private var playerState: PlayerState = PlayerState.Default
+    private var playerState: PlayerState = PlayerState.DEFAULT
     private val simpleDateFormat = SimpleDateFormat(SearchActivity.TRACK_TIME_FORMAT_PATTERN, Locale.getDefault())
     private val handler = Handler(Looper.getMainLooper())
 
@@ -85,24 +85,26 @@ class AudioPlayerActivity : AppCompatActivity() {
 
     private fun playbackControl() {
         when (playerState) {
-            PlayerState.Prepared, PlayerState.Paused -> playTrack()
-            PlayerState.Playing -> pauseTrack()
-            PlayerState.Default -> Unit
+            PlayerState.PREPARED, PlayerState.PAUSED -> playTrack()
+            PlayerState.PLAYING -> pauseTrack()
+            PlayerState.DEFAULT -> Unit
         }
     }
 
     private fun preparePlayer(previewUrl: String) {
         trackPlayer.setDataSource(previewUrl)
         trackPlayer.prepareAsync()
+
         trackPlayer.setOnPreparedListener {
-            playerState = PlayerState.Prepared
+            playerState = PlayerState.PREPARED
         }
+
         trackPlayer.setOnCompletionListener {
             handler.removeCallbacks(updatePlaybackRunnable)
             binding.tvTime.text = PLAYBACK_TIME_START
             trackPlayer.seekTo(PLAYER_START_POSITION)
             binding.btnPlaybackControl.setImageResource(R.drawable.ic_play_arrow)
-            playerState = PlayerState.Prepared
+            playerState = PlayerState.PREPARED
         }
     }
 
@@ -110,14 +112,14 @@ class AudioPlayerActivity : AppCompatActivity() {
         startPlaybackUpdate()
         trackPlayer.start()
         binding.btnPlaybackControl.setImageResource(R.drawable.ic_pause)
-        playerState = PlayerState.Playing
+        playerState = PlayerState.PLAYING
     }
 
     private fun pauseTrack() {
         handler.removeCallbacks(updatePlaybackRunnable)
         trackPlayer.pause()
         binding.btnPlaybackControl.setImageResource(R.drawable.ic_play_arrow)
-        playerState = PlayerState.Paused
+        playerState = PlayerState.PAUSED
     }
 
     private fun startPlaybackUpdate() {
