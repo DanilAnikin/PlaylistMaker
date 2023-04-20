@@ -1,13 +1,12 @@
-package com.example.playlistmaker.adapter
+package com.example.playlistmaker
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
-import com.example.playlistmaker.R
 import com.example.playlistmaker.databinding.TrackItemBinding
-import com.example.playlistmaker.model.Track
+import com.example.playlistmaker.domain.models.Track
 
 class TrackListAdapter : RecyclerView.Adapter<TrackListAdapter.TrackViewHolder>() {
     private val tracks: MutableList<Track> = mutableListOf()

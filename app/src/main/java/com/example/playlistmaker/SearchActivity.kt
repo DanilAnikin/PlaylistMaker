@@ -14,11 +14,9 @@ import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.playlistmaker.adapter.TrackListAdapter
 import com.example.playlistmaker.databinding.ActivitySearchBinding
-import com.example.playlistmaker.model.Track
-import com.example.playlistmaker.retrofit.ITunesSearchApi
-import com.example.playlistmaker.retrofit.TracksResponse
+import com.example.playlistmaker.domain.models.Track
+import com.example.playlistmaker.audioplayer.presentation.ui.AudioPlayerActivity
 import retrofit2.*
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.*
@@ -52,17 +50,14 @@ class SearchActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySearchBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        setupToolbar(binding.toolbarInclude.toolbar, getString(R.string.search_screen_toolbar_title)) {
+            finish()
+        }
 
         if (savedInstanceState != null) {
             searchFieldText = savedInstanceState.getString(SEARCH_TEXT_KEY).toString()
             binding.etSearch.setText(searchFieldText)
             findTracks()
-        }
-
-        binding.toolbarInclude.toolbar.apply {
-            title = getString(R.string.search_screen_toolbar_title)
-            setSupportActionBar(this)
-            setNavigationOnClickListener { finish() }
         }
 
         binding.etSearch.requestFocus()
