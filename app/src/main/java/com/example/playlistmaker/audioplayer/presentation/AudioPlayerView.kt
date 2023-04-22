@@ -1,6 +1,6 @@
 package com.example.playlistmaker.audioplayer.presentation
 
-import com.example.playlistmaker.domain.models.Track
+import com.example.playlistmaker.search.domain.models.Track
 
 interface AudioPlayerView {
     fun drawPlayer(track: Track)

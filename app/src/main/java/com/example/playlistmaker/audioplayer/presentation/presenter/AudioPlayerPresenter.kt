@@ -2,7 +2,7 @@ package com.example.playlistmaker.audioplayer.presentation.presenter
 
 import com.example.playlistmaker.audioplayer.domain.api.AudioPlayerInteractor
 import com.example.playlistmaker.audioplayer.domain.enums.PlayerState
-import com.example.playlistmaker.domain.models.Track
+import com.example.playlistmaker.search.domain.models.Track
 import com.example.playlistmaker.audioplayer.presentation.AudioPlayerView
 import com.example.playlistmaker.audioplayer.presentation.PlaybackTimer
 

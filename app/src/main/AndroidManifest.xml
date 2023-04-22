@@ -20,7 +20,7 @@
             android:name="com.example.playlistmaker.audioplayer.presentation.ui.AudioPlayerActivity"
             android:exported="false" />
         <activity
-            android:name=".SearchActivity"
+            android:name=".search.presentation.ui.SearchActivity"
             android:exported="false" />
         <activity
             android:name=".LibraryActivity"

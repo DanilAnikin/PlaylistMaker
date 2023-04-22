@@ -1,4 +1,4 @@
-package com.example.playlistmaker.domain.models
+package com.example.playlistmaker.search.domain.models
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
@@ -15,6 +15,6 @@ data class Track(
     val primaryGenreName: String,
     val country: String,
     val previewUrl: String?
-): Parcelable {
+) : Parcelable {
     fun getCoverArtworkUrl() = artworkUrl100.replaceAfterLast("/", "512x512bb.jpg")
 }
