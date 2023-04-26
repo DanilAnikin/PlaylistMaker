@@ -12,11 +12,8 @@ class LibraryActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityLibraryBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        binding.toolbarInclude.toolbar.apply {
-            title = getString(R.string.library_screen_toolbar_title)
-            setSupportActionBar(this)
-            setNavigationOnClickListener { finish() }
+        setupToolbar(binding.toolbarInclude.toolbar, getString(R.string.library_screen_toolbar_title)) {
+            finish()
         }
     }
 }

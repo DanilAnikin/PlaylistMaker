@@ -1,4 +1,4 @@
-package com.example.playlistmaker.adapter
+package com.example.playlistmaker.search.presentation.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,9 +7,10 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.example.playlistmaker.R
 import com.example.playlistmaker.databinding.TrackItemBinding
-import com.example.playlistmaker.model.Track
+import com.example.playlistmaker.search.domain.models.Track
 
 class TrackListAdapter : RecyclerView.Adapter<TrackListAdapter.TrackViewHolder>() {
+
     private val tracks: MutableList<Track> = mutableListOf()
 
     fun setData(newTracks: List<Track>) {
@@ -17,12 +18,11 @@ class TrackListAdapter : RecyclerView.Adapter<TrackListAdapter.TrackViewHolder>(
         tracks.addAll(newTracks)
         notifyDataSetChanged()
     }
+
     fun clearData() {
         tracks.clear()
         notifyDataSetChanged()
     }
-
-    fun isDataEmpty(): Boolean = tracks.isEmpty()
 
     var onTrackClickListener: ((Track) -> Unit)? = null
 
@@ -40,6 +40,7 @@ class TrackListAdapter : RecyclerView.Adapter<TrackListAdapter.TrackViewHolder>(
     override fun getItemCount(): Int = tracks.size
 
     class TrackViewHolder(private val binding: TrackItemBinding) : RecyclerView.ViewHolder(binding.root) {
+
         fun bind(track: Track) {
             binding.apply {
                 tvTrackName.text = track.trackName

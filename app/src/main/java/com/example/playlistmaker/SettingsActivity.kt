@@ -15,11 +15,9 @@ class SettingsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySettingsBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        val toolbar = binding.toolbarInclude.toolbar
-        toolbar.title = getString(R.string.settings_screen_toolbar_title)
-        setSupportActionBar(toolbar)
-        toolbar.setNavigationOnClickListener { finish() }
+        setupToolbar(binding.toolbarInclude.toolbar, getString(R.string.settings_screen_toolbar_title)) {
+            finish()
+        }
 
         binding.flShareApp.setOnClickListener {
             shareApp()
