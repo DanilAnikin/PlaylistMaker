@@ -89,6 +89,11 @@ class SearchActivity : AppCompatActivity(), SearchScreenView {
         }
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        presenter.onViewDestroyed()
+    }
+
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         outState.putString(SEARCH_TEXT_KEY, binding.etSearch.text.toString())

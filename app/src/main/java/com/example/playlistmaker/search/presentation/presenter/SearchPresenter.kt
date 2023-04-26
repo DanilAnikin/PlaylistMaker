@@ -2,6 +2,7 @@ package com.example.playlistmaker.search.presentation.presenter
 
 import com.example.playlistmaker.search.domain.models.Track
 import com.example.playlistmaker.search.domain.api.SearchInteractor
+import com.example.playlistmaker.search.domain.api.TracksLoadResultListener
 import com.example.playlistmaker.search.presentation.SearchScreenView
 
 class SearchPresenter(
@@ -10,6 +11,20 @@ class SearchPresenter(
 ) {
 
     init {
+        interactor.subscribeOnTracksLoadResult(object : TracksLoadResultListener {
+            override fun onSuccess(tracks: List<Track>) {
+                if (tracks.isEmpty()) {
+                    view.showNothingFoundPlaceholder()
+                } else {
+                    view.showTrackList(tracks)
+                }
+            }
+
+            override fun onError() {
+                view.showConnectionErrorPlaceholder()
+            }
+        })
+
         showTracksHistory()
     }
 
@@ -31,19 +46,7 @@ class SearchPresenter(
 
         view.onLoading()
 
-        interactor.loadTracks(
-            query = query,
-            onSuccess = { tracks ->
-                if (tracks.isEmpty()) {
-                    view.showNothingFoundPlaceholder()
-                } else {
-                    view.showTrackList(tracks)
-                }
-            },
-            onError = {
-                view.showConnectionErrorPlaceholder()
-            }
-        )
+        interactor.loadTracks(query)
     }
 
     fun searchFieldClearButtonClicked() {
@@ -72,7 +75,7 @@ class SearchPresenter(
 
     private fun showTracksHistory() {
         val tracksHistory = interactor.getSearchHistory()
-        if(tracksHistory.isNotEmpty()) {
+        if (tracksHistory.isNotEmpty()) {
             view.showHistory(tracksHistory)
         }
     }
@@ -84,5 +87,9 @@ class SearchPresenter(
 
     fun historyTrackClicked(track: Track) {
         view.openAudioPlayerScreen(track)
+    }
+
+    fun onViewDestroyed() {
+        interactor.unsubscribeFromTracksLoadResult()
     }
 }
